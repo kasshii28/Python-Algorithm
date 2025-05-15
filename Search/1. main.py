@@ -8,7 +8,7 @@ def linear_search(numbers: List[int], value: int) -> IndexNum:
       return i
   return -1
 
-# def bianry_search(numbers: List[int], value: int) -> IndexNum:
+# def binary_search(numbers: List[int], value: int) -> IndexNum:
 #   left, right = 0, len(numbers) - 1
 #   while left <= right:
 #     mid = (left + right) // 2
@@ -21,7 +21,7 @@ def linear_search(numbers: List[int], value: int) -> IndexNum:
 #   return -1
 
 
-def bianry_search(numbers: List[int], value: int) -> IndexNum:
+def binary_search(numbers: List[int], value: int) -> IndexNum:
   def _binary_search(
       numbers: List[int],
       value: int,
@@ -44,4 +44,4 @@ def bianry_search(numbers: List[int], value: int) -> IndexNum:
 
 if __name__ == '__main__':
   nums = [0,1,5,7,9,11,15,20,24]
-  print(bianry_search(nums, 2))
+  print(binary_search(nums, 2))

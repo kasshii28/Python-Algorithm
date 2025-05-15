@@ -1,37 +1,34 @@
 from typing import List
 
-def merge_sort(numbers: List[int]) -> List[int]:
+def merge_sort(numbers: List[int]):
+  print(numbers)
   if len(numbers) <= 1:
     return numbers
 
-  center = len(numbers) // 2
-  left = numbers[:center]
-  right = numbers[center:]
+  mid = len(numbers) // 2
+  left = merge_sort(numbers[:mid])
+  right = merge_sort(numbers[mid:])
+  print("左:",left, "右:",right)
 
-  merge_sort(left)
-  merge_sort(right)
+  return merge(left,right)
 
-  i = j = k = 0
-  while i< len(left) and j< len(right):
-    if left[i] < right[j]:
-      numbers[k] = left[i]
-      i += 1
+def merge(left, right):
+  res = []
+  i=j=0
+  
+  while i < len(left) and j < len(right):
+    if left[i] <= right[j]:
+      res.append(left[i])
+      i+=1
     else:
-      numbers[k] = right[j]
-      j += 1
-    k += 1
+      res.append(right[j])
+      j+=1
+    
+  res.extend(left[i:])
+  res.extend(right[j:])
   
-  while i < len(left):
-    numbers[k] = left[i]
-    i += 1
-    k += 1
-  
-  while j < len(right):
-    numbers[k] = right[j]
-    j += 1
-    k += 1
-  
-  return numbers
+  print("マージ済み",res)
+  return res
 
 if __name__ == "__main__":
   import random
